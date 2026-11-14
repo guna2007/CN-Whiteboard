@@ -161,7 +161,7 @@ Idle writers send a heartbeat after four seconds. Readers allow 14 seconds for a
 \section{User guide}
 
 \textbf{Start the server.}
-Connect the computers to the same LAN. Find the host's IPv4 address with \code{ipconfig} on Windows or \code{ip -4 addr} on Linux. Permit inbound TCP on the selected port on the host's private network if prompted. Install Python 3.11 or later with Tk and check it with \code{python -m tkinter}. Some Linux distributions package Tk separately. From the extracted project folder, run:
+Connect the computers to the same LAN. Find the host's IPv4 address with \code{ipconfig} on Windows or \code{ip -4 addr} on Linux. Permit inbound TCP on the host's private network if prompted. For the source version, install Python 3.11 or later with Tk and check it with \code{python -m tkinter}. Some Linux distributions package Tk separately. Extract \code{source-code.zip} and run:
 
 \command{python server.py --bind 0.0.0.0 --port 5050}
 
@@ -199,7 +199,7 @@ Three Windows loopback clients exercised the user workflows below. In a separate
 \midrule
 Drawing and shared canvas & Freehand, colors, eraser, annotations and shape tools. Three clients converged on the same drawing. Host save, clear and restore updated the room as expected.\\
 Rooms and participants & IPv4 and room-code setup, named pointers and join/leave notices. A late viewer received the existing board and chat, and an unauthorized command was rejected.\\
-Sockets and event handling & Split and combined frames, concurrent broadcasts, duplicate suppression, revision-gap recovery and heartbeat timeout were exercised.\\
+Sockets and event handling & Checked split and combined frames, concurrent broadcasts, duplicate suppression and idle timeout. A client test verified that a revision gap triggers a sync request.\\
 Group chat & Room messages appeared in broadcast order with names and timestamps. Late and returning clients received recent chat.\\
 State and recovery & Verified snapshots, disconnect/reconnect, removal of an unfinished draft and per-user undo and redo. An invalid restore left the board unchanged.\\
 \bottomrule

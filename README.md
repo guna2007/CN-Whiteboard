@@ -17,10 +17,7 @@ A Computer Networks lab project for drawing and chatting together over a LAN. Ru
 | Client application (Windows x64) | [WhiteboardClient.exe](submission/WhiteboardClient.exe?raw=1) |
 | Source code (three Python files) | [source-code.zip](submission/source-code.zip?raw=1) |
 | Technical report and user guide | [technical-report.pdf](submission/technical-report.pdf) |
-
-The presentation and explanation video will be added to [submission/](submission/) when ready.
-
-[Editable LaTeX source](technical-report.tex)
+| Presentation | [presentation.pptx](submission/presentation.pptx?raw=1) |
 
 ## Network architecture
 
@@ -85,14 +82,14 @@ Undo and redo apply to the user's own actions, including erasures. If Ravi erase
 
 5. Enter the server IPv4 address, port, and username. The host enters a room name and selects **Create room**. Each participant enters the appropriate room code and selects **Join room**. Use `127.0.0.1` if all clients run on the server machine.
 
-On Linux, use `python3` if that is the installed command. Once Python and Tk are present, the application needs only the LAN connection. The Windows x64 standalone builds are for the course executable deliverable and bundle their runtime. From the executable folder, run `WhiteboardServer.exe --bind 0.0.0.0 --port 5050` (use `.\WhiteboardServer.exe` in PowerShell) and launch `WhiteboardClient.exe`. The source run and standalone builds were verified on Windows. Linux source use still needs a test.
+On Linux, use `python3` if that is the installed command. Once Python and Tk are present, the application needs only the LAN connection. Linux source use has yet to be tested.
 
-To rebuild the standalones on a Windows x64 machine with Python and Tk installed, run the following once with Internet access to install the build tool. The resulting executables appear in `dist/` and run offline.
+### Run the Windows executables
+
+Download the two Windows x64 executables from the submission table. They bundle their runtime. Start the server from PowerShell in the download folder, then open `WhiteboardClient.exe` on each participant’s machine and use the same room setup as above.
 
 ~~~text
-python -m pip install PyInstaller
-python -m PyInstaller --onefile --name WhiteboardServer server.py
-python -m PyInstaller --onefile --windowed --name WhiteboardClient client.py
+.\WhiteboardServer.exe --bind 0.0.0.0 --port 5050
 ~~~
 
 ### Controls and permissions
@@ -112,13 +109,9 @@ python -m PyInstaller --onefile --windowed --name WhiteboardClient client.py
 | L. Bhupesh | **cs24b2029** | Room creation and joining, presence, access control and chat. Demonstrate the editor and viewer roles, named cursors and chat history. |
 | R. Suhaas | **cs24b2040** | Tkinter workspace, canvas rendering, drawing tools and point batching. Demonstrate colored strokes, erasing, shapes and notes. |
 
-## Edit the report
-
-Keep `technical-report.tex` at the repository root alongside `screenshots/`. From the root, run `tectonic --outdir submission technical-report.tex` to update the submission PDF. The report uses the same app screenshots linked below and draws its diagrams in LaTeX.
-
 ## Verification
 
-Three Tkinter clients on Windows loopback exercised drawing, chat, roles, save/restore, and reconnect. A TCP test sent 40 edits from two concurrent senders and verified that all three clients received the same revision sequence. It also exercised split and combined frames, duplicate operation numbers, revision-gap recovery, and idle-peer timeout.
+Three Tkinter clients on Windows loopback exercised drawing, chat, roles, save and restore, and reconnect. A TCP test sent 40 edits from two concurrent senders and verified that all three clients received the same revision sequence. It also checked split and combined frames, duplicate operation numbers, and idle-peer timeout. A client test verified that a revision gap triggers a sync request.
 
 For 50 small committed edits with three connected peers on Windows loopback, sender submission to remote socket receipt measured **0.12 ms median** and **0.22 ms p95**. This measurement ends before Tk rendering. The packaged server accepted a session and sent a snapshot, and the packaged client opened its lobby. A two-device offline LAN demonstration remains to be checked on the evaluation network.
 
