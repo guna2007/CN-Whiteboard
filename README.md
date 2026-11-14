@@ -17,7 +17,7 @@ A Computer Networks lab project for drawing and chatting together over a LAN. Ru
 | Client application (Windows x64) | [WhiteboardClient.exe](submission/WhiteboardClient.exe?raw=1) |
 | Source code (three Python files) | [source-code.zip](submission/source-code.zip?raw=1) |
 | Technical report and user guide | [technical-report.pdf](submission/technical-report.pdf) |
-| Presentation | [presentation.pptx](submission/presentation.pptx?raw=1) |
+| Presentation | [Download the revised PowerPoint](https://raw.githubusercontent.com/guna2007/CN-Whiteboard/964937bb74dd6b63fc36a4483c938c2edc245251/submission/presentation.pptx) |
 
 ## Network architecture
 
