@@ -9,7 +9,18 @@ A Computer Networks lab project for drawing and chatting together over a LAN. Ru
 | L. Bhupesh | **cs24b2029** |
 | R. Suhaas | **cs24b2040** |
 
-[Technical report and user guide](technical-report.pdf) · [Editable LaTeX source](technical-report.tex)
+## Submission files
+
+| Deliverable | Download |
+|---|---|
+| Server application (Windows x64) | [WhiteboardServer.exe](submission/WhiteboardServer.exe?raw=1) |
+| Client application (Windows x64) | [WhiteboardClient.exe](submission/WhiteboardClient.exe?raw=1) |
+| Source code (three Python files) | [source-code.zip](submission/source-code.zip?raw=1) |
+| Technical report and user guide | [technical-report.pdf](submission/technical-report.pdf) |
+
+The presentation and explanation video will be added to [submission/](submission/) when ready.
+
+[Editable LaTeX source](technical-report.tex)
 
 ## Network architecture
 
@@ -58,7 +69,7 @@ Undo and redo apply to the user's own actions, including erasures. If Ravi erase
 
 ## Run on a LAN
 
-1. Extract the project to a folder on each machine or copy the source there before the offline demo. Use Python 3.11 or later with Tkinter. Run `python -m tkinter` to check the installation. Some Linux distributions package Tk separately.
+1. Extract [source-code.zip](submission/source-code.zip?raw=1) to a folder on each machine or copy the source there before the offline demo. Use Python 3.11 or later with Tkinter. Run `python -m tkinter` to check the installation. Some Linux distributions package Tk separately.
 2. On the server machine, open a terminal in the project folder and start the server.
 
    ~~~text
@@ -103,7 +114,7 @@ python -m PyInstaller --onefile --windowed --name WhiteboardClient client.py
 
 ## Edit the report
 
-Keep `technical-report.tex` at the repository root alongside `screenshots/`. Compile from the root with `tectonic technical-report.tex` or run `pdflatex technical-report.tex` twice with a LaTeX installation that includes TikZ. The report uses the same app screenshots linked below and draws its diagrams in LaTeX.
+Keep `technical-report.tex` at the repository root alongside `screenshots/`. From the root, run `tectonic --outdir submission technical-report.tex` to update the submission PDF. The report uses the same app screenshots linked below and draws its diagrams in LaTeX.
 
 ## Verification
 
