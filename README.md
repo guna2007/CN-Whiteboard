@@ -16,8 +16,8 @@ A Computer Networks lab project for drawing and chatting together over a LAN. Ru
 | Server application (Windows x64) | [WhiteboardServer.exe](submission/WhiteboardServer.exe?raw=1) |
 | Client application (Windows x64) | [WhiteboardClient.exe](submission/WhiteboardClient.exe?raw=1) |
 | Source code (three Python files) | [source-code.zip](submission/source-code.zip?raw=1) |
-| Technical report and user guide | [technical-report.pdf](submission/technical-report.pdf) |
-| Presentation | [Download the revised PowerPoint](https://raw.githubusercontent.com/guna2007/CN-Whiteboard/964937bb74dd6b63fc36a4483c938c2edc245251/submission/presentation.pptx) |
+| Technical report and user guide | [technical-report.pdf](https://raw.githubusercontent.com/guna2007/CN-Whiteboard/73e9892b2ab304290b0ce682f79ad8d067aa7eb6/submission/technical-report.pdf) |
+| Presentation | [presentation.pptx](https://raw.githubusercontent.com/guna2007/CN-Whiteboard/73e9892b2ab304290b0ce682f79ad8d067aa7eb6/submission/presentation.pptx) |
 
 ## Network architecture
 
@@ -66,7 +66,7 @@ Undo and redo apply to the user's own actions, including erasures. If Ravi erase
 
 ## Run on a LAN
 
-1. Extract [source-code.zip](submission/source-code.zip?raw=1) to a folder on each machine or copy the source there before the offline demo. Use Python 3.11 or later with Tkinter. Run `python -m tkinter` to check the installation. Some Linux distributions package Tk separately.
+1. Extract [source-code.zip](submission/source-code.zip?raw=1) on each machine. Use Python 3.11 or later with Tkinter. Run `python -m tkinter` to check the installation. Some Linux distributions package Tk separately.
 2. On the server machine, open a terminal in the project folder and start the server.
 
    ~~~text
@@ -102,18 +102,18 @@ Download the two Windows x64 executables from the submission table. They bundle 
 
 ## Team contributions
 
-| Member | Roll number | Responsibility and demonstration |
+| Member | Roll number | Contribution |
 |---|---|---|
-| L. Guna | **cs24b2043** | TCP framing, socket lifecycle, concurrency and ordered broadcasts. Trace one frame through the reader, room lock and peer writer queue. |
-| B. Rakesh | **cs24b2039** | Board state, per-user undo and redo, snapshots, persistence and reconnection. Demonstrate save, restore and recovery from a dropped connection. |
-| L. Bhupesh | **cs24b2029** | Room creation and joining, presence, access control and chat. Demonstrate the editor and viewer roles, named cursors and chat history. |
-| R. Suhaas | **cs24b2040** | Tkinter workspace, canvas rendering, drawing tools and point batching. Demonstrate colored strokes, erasing, shapes and notes. |
+| L. Guna | **cs24b2043** | TCP framing, socket lifecycle, concurrency and ordered broadcasts. |
+| B. Rakesh | **cs24b2039** | Board state, per-user undo and redo, snapshots, persistence and reconnection. |
+| L. Bhupesh | **cs24b2029** | Room creation and joining, presence, access control and chat. |
+| R. Suhaas | **cs24b2040** | Tkinter workspace, canvas rendering, drawing tools and point batching. |
 
 ## Verification
 
 Three Tkinter clients on Windows loopback exercised drawing, chat, roles, save and restore, and reconnect. A TCP test sent 40 edits from two concurrent senders and verified that all three clients received the same revision sequence. It also checked split and combined frames, duplicate operation numbers, and idle-peer timeout. A client test verified that a revision gap triggers a sync request.
 
-For 50 small committed edits with three connected peers on Windows loopback, sender submission to remote socket receipt measured **0.12 ms median** and **0.22 ms p95**. This measurement ends before Tk rendering. The packaged server accepted a session and sent a snapshot, and the packaged client opened its lobby. A two-device offline LAN demonstration remains to be checked on the evaluation network.
+For 50 small committed edits with three connected peers on Windows loopback, sender submission to remote socket receipt measured **0.12 ms median** and **0.22 ms p95**. This measurement excludes Tk rendering and physical LAN latency. The packaged server accepted a session and sent a snapshot, and the packaged client opened its lobby.
 
 ## Screenshots
 
