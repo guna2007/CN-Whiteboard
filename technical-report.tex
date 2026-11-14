@@ -169,7 +169,7 @@ Connect the computers to the same LAN. Find the host's IPv4 address with \code{i
 
 \command{python client.py}
 
-\textbf{Create or join a room.} Enter the server's IPv4 address, port and a username. Use \code{127.0.0.1} on the same host for a local rehearsal. The host enters a room name and selects \textbf{Create room}. Other users enter the editor or viewer code and select \textbf{Join room}.
+\textbf{Create or join a room.} Enter the server's IPv4 address, port and a username. Use \code{127.0.0.1} when the client and server run on the same machine. The host enters a room name and selects \textbf{Create room}. Other users enter the editor or viewer code and select \textbf{Join room}.
 
 \textbf{Collaborate.} Choose a color and width. Drag with Pen, Line, Arrow or Rectangle, or click with Note to enter an annotation. Click a committed object with Eraser to remove it. Undo and Redo work on your own actions. The participant list shows roles and the chat panel shows timestamped messages.
 
@@ -212,19 +212,17 @@ State and recovery & Verified snapshots, disconnect/reconnect, removal of an unf
   \captionof{figure}{Late join (left) and recovery after reconnect (right). Each client displays the shared canvas and recent chat.}
 \end{center}
 
-For the in-person evaluation, disconnect Internet access while keeping the LAN active. Join from a second physical machine, exchange drawing and chat, and verify reconnect and board restoration. A two-device offline run remains to be verified on the evaluation network.
-
 \section{Team contributions}
 
 \small
 \begin{tabularx}{\linewidth}{@{}P{24mm}P{22mm}Y@{}}
 \toprule
-\textbf{Member} & \textbf{Roll number} & \textbf{Responsibility and demonstration}\\
+\textbf{Member} & \textbf{Roll number} & \textbf{Contribution}\\
 \midrule
-L. Guna & \textbf{cs24b2043} & TCP framing, socket lifecycle, concurrency and ordered broadcasts. Trace one frame through the reader, room lock and peer writer queue.\\
-B. Rakesh & \textbf{cs24b2039} & Board state, per-user undo and redo, snapshots, persistence and reconnection. Demonstrate save, restore and recovery from a dropped connection.\\
-L. Bhupesh & \textbf{cs24b2029} & Room creation and joining, presence, access control and chat. Demonstrate the editor and viewer roles, named cursors and chat history.\\
-R. Suhaas & \textbf{cs24b2040} & Tkinter workspace, canvas rendering, drawing tools and point batching. Demonstrate colored strokes, erasing, shapes and notes.\\
+L. Guna & \textbf{cs24b2043} & TCP framing, socket lifecycle, concurrency and ordered broadcasts.\\
+B. Rakesh & \textbf{cs24b2039} & Board state, per-user undo and redo, snapshots, persistence and reconnection.\\
+L. Bhupesh & \textbf{cs24b2029} & Room creation and joining, presence, access control and chat.\\
+R. Suhaas & \textbf{cs24b2040} & Tkinter workspace, canvas rendering, drawing tools and point batching.\\
 \bottomrule
 \end{tabularx}
 
