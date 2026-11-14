@@ -2,7 +2,14 @@
 
 A Computer Networks lab project for drawing and chatting together over a LAN. Run one Python TCP server on the host machine and open the Tkinter client on each participant's machine. The host creates a room, then shares its editor or viewer code.
 
-[Technical report and user guide](technical-report.pdf)
+| Team member | Roll number |
+|---|---|
+| L. Guna | **cs24b2043** |
+| B. Rakesh | **cs24b2039** |
+| L. Bhupesh | **cs24b2029** |
+| R. Suhaas | **cs24b2040** |
+
+[Technical report and user guide](technical-report.pdf) · [Editable LaTeX source](technical-report.tex)
 
 ## Network architecture
 
@@ -85,20 +92,24 @@ python -m PyInstaller --onefile --windowed --name WhiteboardClient client.py
 - Use the host's **Save board** to write the visible board to a JSON file. **Restore board** replaces the room's canvas with that file. Rooms and chat are held in memory during the server process. Restore a saved board into a new room after a restart.
 - The room codes and all traffic travel over plaintext TCP. Use the project on a trusted classroom LAN.
 
-## Team contribution areas
+## Team contributions
 
-| Member | Work | Live demo and viva focus |
+| Member | Roll number | Responsibility and demonstration |
 |---|---|---|
-| 1 | TCP framing, server connections, and ordered broadcasts | Trace a message from its length prefix to the room lock and the writer queue. Show two editors working simultaneously. |
-| 2 | Tkinter canvas and toolbar, scaling, pen batches, erasing and diagram tools | Trace a pointer drag across different window sizes. Show colored strokes, erasure, shapes and notes. |
-| 3 | Room setup, roles, participants, pointers and group chat | Create a room, share the two codes, and demonstrate viewer permissions, chat history and the roster. |
-| 4 | State snapshots, undo and redo, save and restore, and reconnect | Demonstrate a returning user and board recovery. Explain what happens when two users act on the same object. |
+| L. Guna | **cs24b2043** | TCP framing, socket lifecycle, concurrency and ordered broadcasts. Trace one frame through the reader, room lock and peer writer queue. |
+| B. Rakesh | **cs24b2039** | Board state, per-user undo and redo, snapshots, persistence and reconnection. Demonstrate save, restore and recovery from a dropped connection. |
+| L. Bhupesh | **cs24b2029** | Room creation and joining, presence, access control and chat. Demonstrate the editor and viewer roles, named cursors and chat history. |
+| R. Suhaas | **cs24b2040** | Tkinter workspace, canvas rendering, drawing tools and point batching. Demonstrate colored strokes, erasing, shapes and notes. |
+
+## Edit the report
+
+Keep `technical-report.tex` at the repository root alongside `screenshots/`. Compile from the root with `tectonic technical-report.tex` or run `pdflatex technical-report.tex` twice with a LaTeX installation that includes TikZ. The report uses the same app screenshots linked below and draws its diagrams in LaTeX.
 
 ## Verification
 
 Three Tkinter clients on Windows loopback exercised drawing, chat, roles, save/restore, and reconnect. A TCP test sent 40 edits from two concurrent senders and verified that all three clients received the same revision sequence. It also exercised split and combined frames, duplicate operation numbers, revision-gap recovery, and idle-peer timeout.
 
-For 50 small committed edits with three connected peers on Windows loopback, sender submission to remote socket receipt measured **0.11 ms median** and **0.15 ms p95**. This measurement ends before Tk rendering. The packaged server accepted a session and sent a snapshot, and the packaged client opened its lobby. A two-device offline LAN demonstration remains to be checked on the evaluation network.
+For 50 small committed edits with three connected peers on Windows loopback, sender submission to remote socket receipt measured **0.12 ms median** and **0.22 ms p95**. This measurement ends before Tk rendering. The packaged server accepted a session and sent a snapshot, and the packaged client opened its lobby. A two-device offline LAN demonstration remains to be checked on the evaluation network.
 
 ## Screenshots
 
